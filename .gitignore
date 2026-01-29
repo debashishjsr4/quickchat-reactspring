@@ -1,67 +1,60 @@
-<<<<<<< HEAD
-# Compiled class file
-*.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
-=======
-# OS
+# =========================
+# OS / System
+# =========================
 .DS_Store
 Thumbs.db
 
-# Node / React
+# =========================
+# Secrets / Env
+# =========================
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.jks
+
+# =========================
+# Node / Frontend
+# =========================
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+**/node_modules/
 dist/
 build/
 .vite/
 .next/
 out/
 coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Env / secrets
-.env
-.env.*
-*.pem
-*.key
-
+# =========================
 # Java / Spring Boot / Maven
-backend/target/
+# =========================
+**/target/
 *.class
 *.jar
 *.war
+*.ear
 *.log
 
-# IntelliJ
+# =========================
+# IntelliJ IDEA
+# =========================
 .idea/
 *.iml
 out/
 
+# =========================
 # VS Code
+# =========================
 .vscode/
 
+# =========================
 # Misc
+# =========================
 *.tmp
->>>>>>> f16fff6 (Initial commit: backend, frontend, infra)
+*.swp
+*.swo
