@@ -4,6 +4,7 @@ import com.nlite.quickchat.entity.Conversation;
 import com.nlite.quickchat.entity.User;
 import com.nlite.quickchat.service.ConversationService;
 import com.nlite.quickchat.service.UserService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,18 +22,29 @@ public class ConversationController {
     }
 
     @GetMapping
-    public List<Conversation> list(@RequestHeader("X-User") String username) {
+    public List<Conversation> list() {
+        String username = currentUsername();
         User me = userService.resolveOrCreate(username);
         return conversationService.listForUser(me.getId());
     }
 
-    // NEW: create a direct 1:1 chat with another username
     @PostMapping("/direct")
-    public Conversation createDirect(
-            @RequestHeader("X-User") String username,
-            @RequestBody CreateDirectRequest req
-    ) {
+    public Conversation createDirect(@RequestBody CreateDirectRequest req) {
+        String username = currentUsername();
+
+        if (req == null || req.otherUsername() == null || req.otherUsername().trim().isEmpty()) {
+            throw new IllegalArgumentException("otherUsername is required");
+        }
+
         return conversationService.createDirectChat(username, req.otherUsername());
+    }
+
+    private String currentUsername() {
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth == null || auth.getPrincipal() == null) {
+            throw new RuntimeException("Not authenticated");
+        }
+        return auth.getPrincipal().toString();
     }
 
     public record CreateDirectRequest(String otherUsername) {}

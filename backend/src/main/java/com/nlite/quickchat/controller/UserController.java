@@ -3,6 +3,7 @@ package com.nlite.quickchat.controller;
 import com.nlite.quickchat.entity.User;
 import com.nlite.quickchat.repository.UserRepository;
 import com.nlite.quickchat.service.UserService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,14 +20,23 @@ public class UserController {
         this.userService = userService;
     }
 
-    // ensures logged-in user exists + returns all known users (demo-friendly)
     @GetMapping
-    public List<String> listUsers(@RequestHeader("X-User") String username) {
+    public List<String> listUsers() {
+        String username = currentUsername();
         userService.resolveOrCreate(username); // ensure "me" exists
+
         return userRepository.findAll()
                 .stream()
                 .map(User::getUsername)
                 .sorted(String.CASE_INSENSITIVE_ORDER)
                 .toList();
+    }
+
+    private String currentUsername() {
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth == null || auth.getPrincipal() == null) {
+            throw new RuntimeException("Not authenticated");
+        }
+        return auth.getPrincipal().toString();
     }
 }

@@ -1,0 +1,257 @@
+:root {
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: #e5ddd5; /* WhatsApp background */
+}
+
+#root {
+  height: 100vh;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* ---- React routing pages ---- */
+.page {
+  width: 100%;
+  height: 100vh;
+}
+
+/* ---- Login page alignment ---- */
+.loginPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #f2f2f2;
+}
+
+.loginBox {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 18px;
+  width: 340px;
+  box-sizing: border-box;
+}
+
+/* ---- App layout ---- */
+.app {
+  display: flex;
+  height: 100vh;
+  background: #fff;
+}
+
+/* inputs */
+input {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* Match previous login spacing */
+.loginBox input {
+  padding: 8px;
+  font-size: 14px;
+}
+
+.loginBox button {
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* you used .small and .error in the old app */
+.small {
+  font-size: 11px;
+  color: #667781;
+  margin-top: 4px;
+}
+
+.error {
+  color: #b00020;
+  margin-top: 10px;
+  font-size: 13px;
+  white-space: pre-wrap;
+}
+
+.loginBox form input {
+  height: 34px;
+}
+
+.loginBox form button {
+  height: 34px;
+}
+
+/* ----------- APP LAYOUT (RESTORED) ----------- */
+
+.left {
+  width: 320px;
+  background: #f0f2f5;
+  border-right: 1px solid #ddd;
+  padding: 12px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #efeae2;
+  height: 100vh;
+  min-height: 0;
+}
+
+.top {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  background: #f0f2f5;
+  display: flex;
+  align-items: center;
+}
+
+.sectionTitle {
+  margin-top: 12px;
+  font-weight: bold;
+  font-size: 12px;
+  color: #444;
+}
+
+.list {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item {
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.item:hover {
+  background: #e9edef;
+}
+
+.item.active {
+  background: #dfe5e7;
+}
+
+.msgs {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 20px;
+  background: #efeae2;
+}
+
+.bubble {
+  max-width: 65%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: 6px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  position: relative;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+}
+
+.me {
+  margin-left: auto;
+  background: #d9fdd3; /* WhatsApp green */
+  text-align: left;
+}
+.other {
+  margin-right: auto;
+  background: #ffffff;
+}
+
+.sender {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  color: #444;
+}
+
+.composer {
+  padding: 10px 16px;
+  border-top: 1px solid #ddd;
+  background: #f0f2f5;
+  display: flex;
+  gap: 10px;
+}
+
+.composer input {
+  flex: 1;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 14px;
+  font-size: 14px;
+  background: #ffffff;
+  outline: none;
+}
+
+.composer button {
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  background: #00a884;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.composer button:hover {
+  background: #009973;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
